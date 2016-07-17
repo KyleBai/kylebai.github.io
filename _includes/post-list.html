@@ -1,0 +1,8 @@
+{% for category in site.categories %}
+<h6>{{ category | first }} <small>({{ category | last | size }})</small></h6>
+<ul class="arc-list">
+    {% for post in category.last %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endfor %}
