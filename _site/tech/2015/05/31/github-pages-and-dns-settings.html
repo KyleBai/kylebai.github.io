@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kyle Bai - Github Pages and DNS settings</title>
+  <meta name="author" content="Kyle Bai" />
+  <meta name="description" content="The blog of Kyle Bai" />
+  <link rel="canonical" href="https://kylebai.github.io/tech/2015/05/31/github-pages-and-dns-settings.html" />
+  <!-- <script type="text/javascript" src="//use.typekit.net/jxo0xyj.js"></script> -->
+  <!-- <script type="text/javascript">try{Typekit.load();}catch(e){}</script> -->
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="/assets/images/favicon.png">
+  <link rel="alternate" type="application/rss+xml" title="Kyle Bai" href="https://kylebai.github.io/atom.xml" />
+  <link rel="stylesheet" href="/assets/css/all.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="four columns sidebar">
+      <nav>
+  <h1>Hola.</h1>
+  <a href="/">
+    <img src="/assets/images/logo.png" id="logo" alt="Blog logo"/>
+  </a>
+  <h2>I'm <a href="/resume">Kyle Bai</a>.</h2>
+  <hr/>
+  <ul>
+  <p>I do computer things and sometimes write about it here. </p>
+  <p>
+    I'm a Software Engineer in <a href="https://goo.gl/maps/U5kgB">Shannxi, China</a> and I ship code at <a href="http://www.objectivasoftware.com/">Objectiva</a>.
+  </p>
+  <hr/>
+  <div>
+    <div id="social">
+      Follow me:
+<div id="stalker">
+  
+  <a title="kylebai on Github" href="https://github.com/kylebai">
+    <i class="fa fa-github-square"></i>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a title="Kyle Bai on LinkedIn" href="https://www.linkedin.com/in/kylebai">
+    <i class="fa fa-linkedin-square"></i>
+  </a>
+  
+
+  
+
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+
+    </div>
+
+    <div class="eleven columns content">
+      <p class="meta">
+  May 31, 2015
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">Github Pages and DNS settings</h1>
+
+<div id="post">
+  <p>Github Pages 给所有托管在 Github 上的项目提供静态网站和基于 Jekyll 的博客服务。
+如果项目在 Github 上，并且需要一个简单的展示页面的话， Github Pages 是最好的选择，
+同时，Github Pages 也提供自定义域名绑定服务, 但是官方的文档说的不是很明白，本文基
+于我自己的实践说一下如何绑定主域名 (lenage.com) 和多个子域名到 Github 的不同项目。</p>
+
+<h2 id="section">目的</h2>
+
+<p>lenage.com 和 blog.lenage.com 都放在 Github 上，并且分别在不同的 Repository.</p>
+
+<ul>
+  <li><a href="http://lenage.com">lenage.com</a> =&gt; <a href="https://github.com/lenage/lenage.github.com">lenage/lenage.github.com</a></li>
+  <li><a href="http://blog.lenage.com">blog.lenage.com</a> =&gt; <a href="https://github.com/lenage/blog.lenage.com">lenage/blog.lenage.com</a></li>
+</ul>
+
+<p>另外，如果其他的项目用 Github Pages, 只是 <code class="highlighter-rouge">/example-project</code> 的方式访问, 比如 <a href="https://github.com/lenage/react-talk">lenage/react-talk</a>
+可以通过 http://lenage.com/react-talk 访问. <img src="/assets/images/posts/2.png" alt="react-talk" /></p>
+
+<h2 id="lenagecomhttplenagecom-"><a href="http://lenage.com">lenage.com</a> 设置</h2>
+
+<ol>
+  <li>lenage.com 添加 A 记录, <code class="highlighter-rouge">192.30.252.153</code> 和 <code class="highlighter-rouge">192.30.252.154</code>. <img src="/assets/images/posts/1.png" alt="A record" /></li>
+  <li>修改 lenage.com 要指向的项目名称为 <code class="highlighter-rouge">yourusername.github.com</code>, 这不和重要，如果使用其他名字的话，另外项目将不能通过 lenage.com/example-project
+的方式访问</li>
+  <li>新建 <code class="highlighter-rouge">CNAME</code> 文件， 并添加到<code class="highlighter-rouge">youusername.github.com</code>, 这里需要注意的是<code class="highlighter-rouge">CNAME</code> 文件中只能有一个domain.</li>
+  <li><code class="highlighter-rouge">git push</code> 更新项目, 然后在项目的 settings 里面查看 Github Pages 项，如果 ok， 会显示 <code class="highlighter-rouge">Your site is published at http://yourdomain.justadded.com</code>,
+如果显示的是 <code class="highlighter-rouge">Your site is ready to publish at http://a.example.com</code>, 则需要你 update 项目来触发 Github Pages 绑定，随便加一个 commit, 然后 <code class="highlighter-rouge">git push</code>。</li>
+</ol>
+
+<h2 id="bloglenagecomhttpbloglenagecom-"><a href="http://blog.lenage.com">blog.lenage.com</a> 设置</h2>
+
+<p>Github Pages 支持给任何项目绑定子域名， 只有添加 CNAME 文件和设置 DNS，下面看看 blog.lenage.com 的设置:</p>
+
+<ol>
+  <li>添加 CNAME 文件, <code class="highlighter-rouge">echo 'blog.lenage.com' &gt; CNAME</code></li>
+  <li>设置 DNS，添加 CNAME 到 <code class="highlighter-rouge">lenage.github.io</code>, 注意这里是 <code class="highlighter-rouge">lenage.github.io</code>, 虽然不是项目的名字，但是 lenage.com 会处理，这就是为什么前面一定要把 lenage.com
+的项目命名为 <code class="highlighter-rouge">lenage.github.com</code> 的原因. <img src="/assets/images/posts/3.png" alt="blog" /></li>
+  <li>Push 一个 Commit 到 Github，然后到 Settings 查看结果. <img src="/assets/images/posts/4.png" alt="blog" /></li>
+</ol>
+
+<p><a href="https://github.com/lenage">到 Github 查看具体代码</a></p>
+
+<p>PS. Github 最近<a href="http://githubengineering.com/rearchitecting-github-pages/">升级了 Pages 的架构</a>，生成页面比以前又快了很多 :)</p>
+
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+  </ul>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'benage'; // required: replace example with your forum shortname
+
+// The following are highly recommended additional parameters. Remove the slashes in front to use.
+// var disqus_identifier = 'unique_dynamic_id_1234';
+// var disqus_url = 'http://example.com/permalink-to-page.html';
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+ var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+ dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+      <div class="footer">
+        <div class="disclaimer">
+  
+  <p>
+    The postings on this site are my own and don't necessarily represent my
+    employer’s positions, strategies or opinions.
+  </p>
+  
+
+  <p>
+    © Kyle Bai, 2016 &mdash; built with Jekyll using Lagom theme
+  </p>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</body>
+</html>

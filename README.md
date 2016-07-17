@@ -1,32 +1,21 @@
-# About
+# LENAGE'S BLOG
 
-This is my blog based on jekyll. And I change the style and interactive. If you want to use this model of the blog. **Please give a star at this repository**. Then you can clone it as your blog model.
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/lenage/lenage.github.com?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-You can visit [here](http://gaohaoyang.github.io) to see this blog.
-
----
-
-这是我的博客，基于 jekyll。我改了所有默认的样式和交互。如果你想使用这个博客模板。**请先在这个仓库上点个star吧**，这也是对我的肯定和鼓励，谢谢了。然后你可以克隆这个仓库用作你自己的博客。
-
-博客访问地址：[点击这里](http://gaohaoyang.github.io)
-
-**使用时请注明模板来源:  Jekyll theme by [Gaohaoyang](https://github.com/Gaohaoyang/gaohaoyang.github.io)**
-
-<!--
-
-## 被引用信息
-
-使用了我的模板并写明来源的人：   
-
-* [dreamholy](http://dreamholy.github.io/)
-
-没有注明来源的人：
-
-* [yangshuailing](http://yangshuailing.github.io/com/)
-* [huapu728](http://huapu728.github.io/)
-* [greatbuger](http://greatbuger.github.io/) 
+## History
+* Jul 1, 2016 21:10 创建博客
+* 2011-05-12 12:42 从[tatey.com](http://tatey.com) fork 过来设计并做相应的修改
 
 
--->
+## Licence and Copyright
 
+Following files, directories and their contents are copyright kyle bai. You may not reuse anything therein without my permission:
 
+* about.html
+* images/
+
+Following directories and their contents are licensed under the [Creative Commons Attribution-Noncommercial-No Derivative Works 2.5 Australia](http://creativecommons.org/licenses/by-nc-nd/2.5/au/):
+
+* _posts/
+
+All other files and directories are licensed under the [MIT](http://www.opensource.org/licenses/mit-license.php) unless explicitly stated. If you do use them, a link back to http://kylebai.github.io/ would be appreciated but is not required.
